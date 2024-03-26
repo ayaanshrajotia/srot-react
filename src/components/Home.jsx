@@ -36,12 +36,14 @@ function Home() {
                             className="bg-n-dark-gray px-4 rounded-md outline-none h-[40px] border-[1px] border-n-light-gray-2 placeholder:text-n-light-gray max-w-[300px] w-full"
                             onChange={async (e) => {
                                 await dispatch(
-                                    addAssigneeFilter(e.target.value)
+                                    addAssigneeFilter(
+                                        e.target.value.toLocaleLowerCase()
+                                    )
                                 );
                                 await dispatch(
                                     filterTasks({
                                         priorityFilter,
-                                        assigneeFilter: e.target.value,
+                                        assigneeFilter: e.target.value.toLocaleLowerCase(),
                                     })
                                 );
                             }}

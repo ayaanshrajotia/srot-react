@@ -5,19 +5,21 @@ import { useNavigate } from "react-router-dom";
 
 export default function AddTask() {
     const [taskData, setTaskData] = useState({
-        title: "Task 1",
-        description: "Task 1 description",
-        team: "Team 1",
-        assignee: "ayaansh",
-        priority: "0",
-        status: "assign",
+        title: "",
+        description: "",
+        team: "",
+        assignee: "",
+        priority: "",
+        status: "",
     });
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleAddTask = (e) => {
         e.preventDefault();
-        dispatch(addTask(taskData));
+        dispatch(
+            addTask({ ...taskData, assignee: taskData.assignee.toLowerCase() })
+        );
         navigate("/");
     };
 

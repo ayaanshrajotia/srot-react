@@ -63,7 +63,7 @@ export default function TaskBox({
                 <p className="text-xs text-n-light-gray">{startDate}</p>
                 <p className="text-xs text-n-light-gray">{endDate}</p>
             </div> */}
-            <p className="font-medium">@{assignee}</p>
+            <p className="font-medium">@{capitalizeFirstLetter(assignee)}</p>
             <button className="bg-n-white px-4 py-1 text-black rounded-md text-sm hover:opacity-80 transition-all mt-auto">
                 {capitalizeFirstLetter(status)}
             </button>
