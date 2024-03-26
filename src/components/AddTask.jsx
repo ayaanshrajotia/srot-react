@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../app/slices/taskSlice";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function AddTask() {
     const [taskData, setTaskData] = useState({
@@ -17,6 +18,25 @@ export default function AddTask() {
 
     const handleAddTask = (e) => {
         e.preventDefault();
+        if (
+            !taskData.title ||
+            !taskData.description ||
+            !taskData.team ||
+            !taskData.assignee ||
+            !taskData.priority ||
+            !taskData.status
+        ) {
+            toast.error("Please fill all the fields");
+            return;
+        }
+        if (taskData.priority === "Select priority") {
+            toast.error("Please select priority");
+            return;
+        }
+        if (taskData.status === "Select Status") {
+            toast.error("Please select status");
+            return;
+        }
         dispatch(
             addTask({ ...taskData, assignee: taskData.assignee.toLowerCase() })
         );
